@@ -15,8 +15,8 @@ spring:
   datasource:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     url: jdbc:sqlserver://mock-housing-db\\crm:1433;database=mock-housing;sendStringParametersAsUnicode=false
-    username: cxm
-    password: Srgsys01
+    username: mockappuser
+    password: y0urP4ss
 
 
 address-lookup:

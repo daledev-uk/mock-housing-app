@@ -18,7 +18,7 @@ Dockerfile provided to create docker image, steps to run....
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=y0urP4ss' -p 1433:1433 -d --name netcall-housing-db microsoft/mssql-server-linux
 ```
 
-### Create the database 
+## Create the database 
 
 ### Connect using SQL tools
 ```
