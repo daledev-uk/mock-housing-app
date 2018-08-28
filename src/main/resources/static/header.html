@@ -1,0 +1,23 @@
+<div id="headerDiv" class="jumbotron" ng-show="tenancies.showHeader!==false">
+    <button id="delete-menu" ng-click="tenancies.hideHeader()">
+        <img ng-src="img/cross.png" />
+    </button>
+
+    <div class="display-title">
+        <h1>Mock Housing System</h1>
+    </div>
+    <p>This application is designed to mock tenancies and contacts for testing external customers in CXM.</p>
+</div>
+
+<nav role="navigation" class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li ng-class="{active:tenancies.view=='home'}"><a href="#" ng-click="tenancies.showHome()">Home</a></li>
+        <li ng-class="{active:tenancies.view=='create'}"><a href="#" ng-click="tenancies.showCreateForm()">Create Tenancy</a></li>
+        <li ng-class="{active:tenancies.view=='generate'}"><a href="#" ng-click="tenancies.showGenerateForm()">Generate Tenancies</a></li>
+        <li ng-class="{active:tenancies.view=='address'}"><a href="#" ng-click="tenancies.showCreateAddressForm()">Add Address</a></li>
+        <li ng-class="{active:tenancies.view=='inspection'}"><a href="#" ng-click="tenancies.showInspectionArea()">Inspection Area</a></li>
+        <li><a href="ws/webservices.wsdl" target="wsdl">WSDL</a></li>
+
+        <!--<li><a href="#">TODO : Paging, filtering, validation on edit, menu highlighting, sort cursor</a></li>-->
+    </ul>
+</nav>

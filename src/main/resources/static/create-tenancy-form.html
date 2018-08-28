@@ -1,0 +1,63 @@
+<form name="createTenancyForm" role="form" ng-submit="tenancies.create()" ng-show="tenancies.view=='create' ">
+    <h3>Add Tenancy</h3>
+
+    <div class="form-group" >
+        <label for="title">Title:</label>
+        <select required id="title" name="title" ng-model="tenancies.createData.title">
+            <option value="Mr">Mr</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+            <option value="Ms">Ms</option>
+            <option value="Dr">Dr</option>
+            <option value="Lord">Lord</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input required type="text" class="form-control" id="firstName" name="firstName"
+               ng-model="tenancies.createData.firstName" />
+    </div>
+    <div class="form-group">
+        <label for="surname">Surname:</label>
+        <input required type="text" class="form-control" id="surname" name="surname"
+               ng-model="tenancies.createData.lastName"/>
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input required type="email" class="form-control" id="email" name="email"
+               ng-model="tenancies.createData.email"/>
+    </div>
+
+    <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <input type="date" class="form-control" id="startDate" name="startDate"
+               ng-model="tenancies.createData.startDate"/>
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <input type="date" class="form-control" id="endDate" name="endDate"
+               ng-model="tenancies.createData.endDate"/>
+    </div>
+
+    <div class="form-group">
+        <label for="endDate">Address:</label>
+        <br>
+        <select class="form-control" data-width="600px" id="select" data-live-search="true" ng-model="tenancies.createData.addressId">
+        <option ng-repeat="address in tenancies.addressList" value={{address.id}}>{{address.line1}}, {{address.town}}, {{address.postcode}}</option>
+     </select>
+    </div>
+
+    <div  ng-show="createTenancyForm.$valid" width="50px" height="50px">
+        <img class="little-tick" ng-src="img/tick.png">
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+
+</form>

@@ -1,0 +1,56 @@
+.ng-invalid.ng-dirty{
+    border-color: #FA787E;
+}
+
+.ng-valid.ng-dity{
+    border-color: #78FA89;
+}
+
+.little-tick{
+    height:50px;
+    width:50px;
+    padding:5px;
+    float:right;
+}
+
+.jumbotron {
+    position:relative;
+    padding-top:7px;
+    padding-bottom:10px;
+}
+
+
+
+#delete-menu {
+    position:absolute;
+    top:5px;
+    right:1px;
+}
+
+#delete-menu img{
+    height:30px;
+    width:30px;
+}
+
+button
+{
+    background-color:inherit;
+    border:none;
+}
+
+th {
+    cursor: pointer;
+}
+
+th:hover {
+    background: #EEE;
+}
+
+.display-title{
+    font-weight: 300;
+    line-height: 0.5;
+}
+
+.display-title h1{
+    font-size:3em;
+}

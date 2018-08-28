@@ -1,0 +1,77 @@
+
+<div ng-controller="tenancies" ng-show="tenancies.view=='home'">
+
+    <h3 style="float:left;">Tenancies</h3>
+
+    <!-- TODO : https://ciphertrick.com/2015/08/31/server-side-pagination-in-angularjs/ -->
+
+    <div style="float:right; position:relative">
+        <dir-pagination-controls
+                max-size="8"
+                direction-links="true"
+                boundary-links="true"
+                on-page-change="getTenacyData(newPageNumber)" >
+        </dir-pagination-controls>
+    </div>
+    <form>
+        <div class="form-group">
+            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th ng-click="sort('name')">
+                    Lead Tenant
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('id')">
+                    Tenancy Reference
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('email')">
+                    Email
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th>
+                    # Tenants
+                </th>
+                <th ng-click="sort('startDate')">
+                    Start Date
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='startDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th ng-click="sort('endDate')">
+                    End Date
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='endDate'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th width="40">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-show="tenacyData.loading">
+                <td colspan="7" style="text-align:center;">Loading new data!!</td>
+            </tr>
+
+            <!--orderBy:sortKey:reverse-->
+            <!--| mySort:sortKey:reverse-->
+            <tr dir-paginate="tenancy in tenacyData.page | itemsPerPage:tenacyData.itemsPerPage | myFilter:search | mySort:sortKey:reverse" total-items="tenacyData.totalItems" >
+                <td>{{ tenancy.name }}</td>
+                <td>{{ tenancy.id }}</td>
+                <td>{{ tenancy.email }}</td>
+                <td>{{ tenancy.tenants.length }}</td>
+                <td>{{ tenancy.startDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{ tenancy.endDate | date: 'dd/MM/yyyy' }}
+                <td width="80">
+                    <a href="#" ng-click="tenancies.editTenancy(tenancy)" title="View Tenancy">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    <a href="#" ng-click="tenancies.deleteTenancy(tenancy)" title="Delete Tenancy">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

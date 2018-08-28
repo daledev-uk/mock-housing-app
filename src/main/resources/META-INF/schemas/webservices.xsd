@@ -1,0 +1,79 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ns="http://mock-housing-app.com/soap-services"
+           targetNamespace="http://mock-housing-app.com/soap-services" elementFormDefault="qualified">
+
+    <xs:element name="updateTenantEmailRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personReference" type="xs:long"/>
+                <xs:element name="email" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateTenantEmailResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personReference" type="xs:long"/>
+                <xs:element name="oldEmail" type="xs:string"/>
+                <xs:element name="newEmail" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateTenantRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="personReference" type="xs:long"/>
+                <xs:element name="title" type="xs:string" minOccurs="0"/>
+                <xs:element name="firstName" type="xs:string" minOccurs="0"/>
+                <xs:element name="lastName" type="xs:string" minOccurs="0"/>
+                <xs:element name="email" type="xs:string" minOccurs="0"/>
+                <xs:element name="contactNumber" type="xs:string" minOccurs="0"/>
+                <xs:element name="leadTenant" type="xs:boolean" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateTenantResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tenant" type="ns:tenant" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTenancyRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tenancyReference" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getTenancyResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tenancyReference" type="xs:long"/>
+                <xs:element name="name" type="xs:string"/>
+                <xs:element name="startDate" type="xs:date" minOccurs="0"/>
+                <xs:element name="endDate" type="xs:date" minOccurs="0"/>
+                <xs:element name="email" type="xs:string" minOccurs="0"/>
+                <xs:element name="tenants" type="ns:tenant" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="tenant">
+        <xs:sequence>
+            <xs:element name="personReference" type="xs:long"/>
+            <xs:element name="title" type="xs:string" minOccurs="0"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="email" type="xs:string" minOccurs="0"/>
+            <xs:element name="contactNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="leadTenant" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

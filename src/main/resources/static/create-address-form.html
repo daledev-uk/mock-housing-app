@@ -1,0 +1,40 @@
+<form name="createAddressForm" role="form" ng-submit="tenancies.addAddress()" ng-show="tenancies.view=='address'">
+    <h3>Add all addresses via postcode</h3>
+    <label>Postcode: </label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter Postcode" aria-describedby="basic-addon2"
+               ng-model="tenancies.postcodeLookup">
+        <span class="input-group-addon" id="basic-addon2">
+            <button type="button" ng-click="tenancies.getAddress(tenancies.postcodeLookup)">Add All
+            </button>
+        </span>
+    </div>
+    <h3>Add single address</h3>
+    <div class="form-group">
+        <label for="line1">Line 1:</label>
+        <input required type="text" class="form-control" id="line1" name="line1"
+               ng-model="tenancies.address.line1" />
+    </div>
+    <div class="form-group">
+        <label for="line2">Line 2:</label>
+        <input type="text" class="form-control" id="line2" name="line2"
+               ng-model="tenancies.address.line2" />
+    </div>
+    <div class="form-group">
+        <label for="line3">Line 3:</label>
+        <input  type="text" class="form-control" id="line3" name="line3"
+               ng-model="tenancies.address.line3" />
+    </div>
+    <div class="form-group">
+        <label for="town">Town:</label>
+        <input required type="text" class="form-control" id="town" name="town"
+               ng-model="tenancies.address.town" />
+    </div>
+    <div class="form-group">
+        <label for="postcode">PostCode:</label>
+        <input required type="text" class="form-control" id="postcode" name="postcode"
+               ng-model="tenancies.address.postcode" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Address</button>
+</form>

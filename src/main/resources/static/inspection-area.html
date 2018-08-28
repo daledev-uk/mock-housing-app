@@ -1,0 +1,50 @@
+<form name="inspectionView" role="form" ng-submit="tenancies.createInspection()" ng-show="tenancies.view=='inspection'">
+    <h3>Inspection Area</h3>
+
+    <div class="form-group">
+        <label for="inspectionName">Inspection Name:</label>
+        <input type="text" class="form-control" placeholder="Inspection area name" id="inspectionName" ng-model="tenancies.inspectionArea.name">
+    </div>
+
+    <div class="form-group">
+        <label for="inspectionAddresses">Inspection Addresses:</label><br />
+        <select class="form-control" multiple id="inspectionAddresses" ng-model="tenancies.inspectionArea.addresses">
+            <option ng-repeat="address in tenancies.addressList" value={{address.id}}>{{address.line1}}, {{address.town}}, {{address.postcode}}</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create inspection area</button>
+    <br />
+
+    <div ng-repeat="inspection in tenancies.inspectionList">
+        <h3>{{inspection.name}}</h3>
+        <table class="table">
+            <tr>
+                <th>Address Reference</th>
+                <th>Line 1</th>
+                <th>Line 2</th>
+                <th>Line 3</th>
+                <th>Town</th>
+                <th>Postcode</th>
+            </tr>
+            <tr ng-repeat="address in inspection.addresses">
+                <td>{{ address.id}}</td>
+                <td>
+                    <span>{{address.line1}}</span>
+                </td>
+                <td>
+                    <span >{{address.line2}}</span>
+                </td>
+                <td>
+                    <span >{{address.line3}}</span>
+                </td>
+                <td>
+                    <span >{{address.town}}</span>
+                </td>
+                <td>
+                    <span >{{address.postcode}}</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

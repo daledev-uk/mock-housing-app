@@ -1,0 +1,19 @@
+<form role="form" ng-submit="tenancies.generate()" ng-show="tenancies.view=='generate'">
+    <h3>Generate Tenancies</h3>
+
+    <div class="form-group">
+        <label for="total">Number of tenancies to create:</label>
+        <input required="true" type="number" class="form-control" id="total" name="total"
+               min="1" max="100"
+               ng-model="tenancies.generateData.total"/>
+    </div>
+
+    <div class="form-group">
+        <label for="tenants">Number of tenants per tenancy:</label>
+        <input required="true" type="number" class="form-control" id="tenants" name="tenants"
+               min="1" max="10"
+               ng-model="tenancies.generateData.tenants"/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -1,0 +1,125 @@
+<div ng-show="tenancies.view=='edit'">
+
+    <h2>Tenancy Reference : <span class="label label-default">{{tenancies.selectedTenancy.id}}</span></h2>
+
+    <h3>Edit Tenancy</h3>
+
+    <table class="table">
+        <tr>
+            <th>Person Reference</th>
+            <th>Title</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Lead Tenant</th>
+            <th width="80">Edit</th>
+        </tr>
+        <tr ng-repeat="person in tenancies.selectedTenancy.tenants">
+            <td>{{ person.id }}</td>
+            <td>
+                <span ng-show="!person.editing">{{ person.title }}</span>
+                <select ng-show="person.editing" ng-model="person.title">
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Lord">Lord</option>
+                </select>
+            </td>
+            <td>
+                <span ng-show="!person.editing">{{ person.firstName }}</span>
+                <input type="text" ng-show="person.editing" ng-model="person.firstName" ng-required="true"/>
+            </td>
+            <td>
+                <span ng-show="!person.editing">{{ person.lastName }}</span>
+                <input type="text" ng-show="person.editing" ng-model="person.lastName" ng-required="true"/>
+            </td>
+            <td>
+                <span ng-show="!person.editing">{{ person.email }}</span>
+                <input type="email" ng-show="person.editing" ng-model="person.email"/>
+            </td>
+            <td>
+                <span ng-show="!person.editing">{{ person.contactNumber }}</span>
+                <input type="text" ng-show="person.editing" ng-model="person.contactNumber"/>
+            </td>
+            <td>
+                <span ng-show="!person.editing">{{ person.leadTenant }}</span>
+                <input type="checkbox" ng-show="person.editing" ng-model="person.leadTenant"/>
+            </td>
+            <td width="80">
+                <span ng-show="!person.editing">
+                    <a href="#" ng-click="person.editing = true" title="Edit">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+                    <a href="#" ng-click="tenancies.deleteTenant(person)" title="Delete">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </span>
+                <span ng-show="person.editing">
+                    <a href="#" ng-click="person.editing = false" title="Cancel">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                    <a href="#" ng-show="tenancies.isPersonValid(person)" ng-click="tenancies.updateTenant(person)"
+                       title="Save">
+                                <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                </span>
+
+            </td>
+        </tr>
+    </table>
+
+    <button type="sackerubmit" class="btn btn-primary" ng-click="tenancies.addTenant();">Add Tenant</button>
+    <h3>Tenancy Address</h3>
+    <br />
+    <form ng-show="tenancies.hasAddress" class="form-horizontal" role="form">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Line 1:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{tenancies.selectedTenancy.address.line1}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Line 2:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{tenancies.selectedTenancy.address.line2}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Line 3:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{tenancies.selectedTenancy.address.line3}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Town:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{tenancies.selectedTenancy.address.town}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Postcode:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{tenancies.selectedTenancy.address.postcode}}</p>
+            </div>
+        </div>
+    </form>
+    <div id="addAddress" ng-show="!tenancies.hasAddress">
+        <select class="form-control"  id="select"  ng-model="tenancies.selectedAddress">
+            <option ng-repeat="address in tenancies.addressList" value={{address.id}}>{{address.line1}}, {{address.town}}, {{address.postcode}}</option>
+        </select>
+        <button type="submit" class="btn btn-primary" ng-click="tenancies.addAddressToTenancy()">Add address to tenancy</button>
+        <br />
+    </div>
+    <div id="editAddress" ng-show="tenancies.hasAddress">
+        <select class="form-control"  id="select2"  ng-model="tenancies.selectedAddress">
+            <option ng-repeat="address in tenancies.addressList" value={{address.id}}>{{address.line1}}, {{address.town}}, {{address.postcode}}</option>
+        </select>
+        <button type="submit" class="btn btn-primary" ng-click="tenancies.addAddressToTenancy()">Change tenancy address</button>
+        <br />
+    </div>
+
+
+</div>
