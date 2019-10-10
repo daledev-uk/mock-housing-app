@@ -1,4 +1,4 @@
-# mock-housing-app
+# Mock Housing App
 
 # Summary
 A mock housing application I created to aid testing of a system I worked on. Also gave me opportunity to play with Spring Boot some more and Angular.
